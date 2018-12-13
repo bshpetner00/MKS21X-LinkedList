@@ -5,12 +5,12 @@ public class MyLinkedList {
 		if (size >= 2) {
 			size = s;
 			start = f;
-			end = l;	
+			end = l;
 		}
 		else if (f.equals(l)) {
 			size = 1;
 			start = f;
-			end = start;
+			end = l;
 		}
 	}
 	public int size() {
@@ -23,6 +23,12 @@ public class MyLinkedList {
 		size++;
 	}
 	public String toString() {
-		return "This function is not finished yet";
+		String output = "{";
+		Node i = this.start;
+		while (i != null) {
+			output += "" + i.getData() + " ";
+			i = i.getNextNode();
+		}
+		return output;
 	}
 }
