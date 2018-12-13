@@ -1,0 +1,28 @@
+public class MyLinkedList {
+	private int size;
+	private Node start,end;
+	public MyLinkedList(int s,Node f,Node l) {
+		if (size >= 2) {
+			size = s;
+			start = f;
+			end = l;	
+		}
+		else if (f.equals(l)) {
+			size = 1;
+			start = f;
+			end = start;
+		}
+	}
+	public int size() {
+		return size;
+	}
+	public void add(int value) {
+		Node newbie = new Node(value,null,end);
+		end.setNext(newbie);
+		end = newbie;
+		size++;
+	}
+	public String toString() {
+		return "This function is not finished yet";
+	}
+}
