@@ -22,6 +22,9 @@ public class MyLinkedList {
 		end = newbie;
 		size++;
 	}
+	public Node getNode(MyLinkedList list) {
+		
+	}
 	public String toString() {
 		String output = "{";
 		Node i = this.start;
