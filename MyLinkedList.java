@@ -23,11 +23,11 @@ public class MyLinkedList {
 		size++;
 	}
 	public Node getNode(MyLinkedList list) {
-		
+			return list.start;
 	}
-	public String toString() {
+	public String toString(MyLinkedList list) {
 		String output = "{";
-		Node i = this.start;
+		Node i = list.start;
 		while (i != null) {
 			output += "" + i.getData() + " ";
 			i = i.getNextNode();

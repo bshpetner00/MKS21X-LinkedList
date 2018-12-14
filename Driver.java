@@ -4,6 +4,7 @@ public class Driver {
 		Node b = new Node (2,null,a);
 		a.setNext(b);
 		MyLinkedList list = new MyLinkedList(2,a,b);
-		System.out.println(list.toString());
+    String string = toString(list);
+		System.out.println(toString(list));
   }
 }
