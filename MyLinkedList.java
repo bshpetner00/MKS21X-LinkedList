@@ -114,4 +114,24 @@ public class MyLinkedList {
 			length++;
 		}
 	}
+	public int remove(int i) throws IndexOutOfBoundsException { //removes given index from list
+		if (i > length-1 || i < 0) {
+			throw new IndexOutOfBoundsException("Given index not found");
+		}
+		int removed = this.get(i);
+		if (i == 0) {
+			start = start.next();
+			start.setPrev(null);
+		}
+		else if (i == length-1) {
+			end = end.prev();
+			end.setNext(null);
+		}
+		else {
+			this.getNode(i+1).setPrev(this.getNode(i-1));
+			this.getNode(i-1).setNext(this.getNode(i+1));
+		}
+		length--;
+		return removed;
+	}
 }

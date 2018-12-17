@@ -16,9 +16,9 @@ public class Driver {
 		}
 		list.add(0,0);
 		System.out.println(list.toString());
-		list.add(2,0);
+		list.add(1,7);
 		System.out.println(list.toString());
-		list.add(1,0);
+		list.add(2,14);
 		System.out.println(list.toString());
   	}
 }
