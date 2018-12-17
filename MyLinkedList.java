@@ -134,4 +134,14 @@ public class MyLinkedList {
 		length--;
 		return removed;
 	}
+	public boolean remove(int val) {
+		if (!this.contains(val)) {
+			return false;
+		}
+		else {
+			int indToRemove = this.indexOf(val);
+			this.remove(indToRemove);
+			return true;
+		}
+	}
 }

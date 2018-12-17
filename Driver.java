@@ -20,5 +20,8 @@ public class Driver {
 		System.out.println(list.toString());
 		list.add(2,14);
 		System.out.println(list.toString());
+		list.remove(0);
+		list.remove(3);
+		System.out.println(list.toString());
   	}
 }
