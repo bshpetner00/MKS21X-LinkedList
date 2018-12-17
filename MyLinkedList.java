@@ -76,7 +76,7 @@ public class MyLinkedList {
 	}
 	public int indexOf(int val) {
 		if (length == 0) { //empty list
-			return -1
+			return -1;
 		}
 		Node i = start;
 		int index = 0;
@@ -94,14 +94,24 @@ public class MyLinkedList {
 			throw new IndexOutOfBoundsException("Given index not found");
 		}
 		Node noob = new Node(val);
-		if (i = length) {
-			end.setNext(newbie);
-			newbie.setPrev(end);
-			end = newbie;
+		if (i == length-1) { //adds to end
+			end.setNext(noob);
+			noob.setPrev(end);
+			end = noob;
+			length++;
 		}
-		Node previous = this.getNode(i-1);
-		Node next = this.getNode(i);
-		previous.next(noob);
-		next.prev(noob);
+		else if (i == 0) { //adds to beginning
+			noob.setNext(start);
+			start.setPrev(noob);
+			start = noob;
+			length++;
+		}
+		else { //adds not at end or beginning
+			noob.setPrev(this.getNode(i-1));
+			noob.setNext(this.getNode(i));
+			this.getNode(i-1).setNext(noob);
+			this.getNode(i).setPrev(noob);
+			length++;
+		}
 	}
 }

@@ -14,5 +14,11 @@ public class Driver {
 		if (list.contains(5)) {
 			System.out.println("YUHHH");
 		}
+		list.add(0,0);
+		System.out.println(list.toString());
+		list.add(2,0);
+		System.out.println(list.toString());
+		list.add(1,0);
+		System.out.println(list.toString());
   	}
 }
