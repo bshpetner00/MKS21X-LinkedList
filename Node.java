@@ -1,24 +1,30 @@
 public class Node {
 	private int data;
 	private Node next,prev;
-	public Node(int d,Node n,Node p) {
+	public Node(int d) {
 		data = d;
-		next = n;
-		prev = p;
 	}
 	public int getData() {
 		return data;
 	}
-	public Node getNextNode() {
+	public Node next() {
 		return next;
 	}
-	public Node getLastNode() {
+	public Node prev() {
 		return prev;
+	}
+	public int setData(int d) {
+		int old = data;
+		data = d;
+		return old;
 	}
 	public void setNext(Node n) {
 		next = n;
 	}
-	public void setLast(Node p) {
+	public void setPrev(Node p) {
 		prev = p;
+	}
+	public String toString() {
+		return "" + data;
 	}
 }
