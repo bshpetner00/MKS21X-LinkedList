@@ -114,7 +114,7 @@ public class MyLinkedList {
 			length++;
 		}
 	}
-	public int remove(int i) throws IndexOutOfBoundsException { //removes given index from list
+	public Integer remove(int i) throws IndexOutOfBoundsException { //removes given index from list
 		if (i > length-1 || i < 0) {
 			throw new IndexOutOfBoundsException("Given index not found");
 		}
@@ -134,7 +134,7 @@ public class MyLinkedList {
 		length--;
 		return removed;
 	}
-	public boolean remove(int val) {
+	public boolean remove(Integer val) {
 		if (!this.contains(val)) {
 			return false;
 		}
@@ -142,6 +142,22 @@ public class MyLinkedList {
 			int indToRemove = this.indexOf(val);
 			this.remove(indToRemove);
 			return true;
+		}
+	}
+	public void extend(MyLinkedList nuu) {
+		if (nuu.length != 0) {
+			if (this.length != 0) {
+				this.end.setNext(nuu.start);
+			}
+			else {
+				this.start = nuu.start;
+			}
+			nuu.start.setPrev(this.end);
+			this.length += nuu.length;
+			this.end = nuu.end;
+			nuu.length = 0;
+			nuu.start = null;
+			nuu.end = null;
 		}
 	}
 }
