@@ -1,4 +1,35 @@
-public class MyLinkedList {
+public class MyLinkedList<E> {
+	private class Node {
+		private E data;
+		private Node next,prev;
+		public Node(E d) {
+			data = d;
+		}
+		public E getData() {
+			return data;
+		}
+		public Node next() {
+			return next;
+		}
+		public Node prev() {
+			return prev;
+		}
+		public E setData(E d) {
+			E old = data;
+			data = d;
+			return old;
+		}
+		public void setNext(Node n) {
+			next = n;
+		}
+		public void setPrev(Node p) {
+			prev = p;
+		}
+		public String toString() {
+			return "" + data;
+		}
+	}
+
 	private int length;
 	private Node start,end;
 	public MyLinkedList() {
@@ -7,7 +38,7 @@ public class MyLinkedList {
 	public int size() {
 		return length;
 	}
-	public boolean add(int value) { //adds a value to the end of the list
+	public boolean add(E value) { //adds a value to the end of the list
 		Node newbie = new Node(value);
 		if (length == 0) { //for empty list
 			start = newbie;
@@ -47,19 +78,19 @@ public class MyLinkedList {
 		}
 		return nod;
 	}
-	public int get(int i) throws IndexOutOfBoundsException { //finds value of node at given index
+	public E get(int i) throws IndexOutOfBoundsException { //finds value of node at given index
 		if (i > length-1 || i < 0) {
 			throw new IndexOutOfBoundsException("Given index not found");
 		}
 		return (this.getNode(i)).getData();
 	}
-	public int set(int i, int val) throws IndexOutOfBoundsException { //sets value of node at given index
+	public E set(int i, E val) throws IndexOutOfBoundsException { //sets value of node at given index
 		if (i > length-1 || i < 0) {
 			throw new IndexOutOfBoundsException("No node at given index");
 		}	
 		return this.getNode(i).setData(val);
 	}
-	public boolean contains(int val) {
+	public boolean contains(E val) {
 		if (length == 0) { //empty list
 			return false;
 		}
@@ -74,7 +105,7 @@ public class MyLinkedList {
 		}
 		return false;
 	}
-	public int indexOf(int val) {
+	public int indexOf(E val) {
 		if (length == 0) { //empty list
 			return -1;
 		}
@@ -89,7 +120,7 @@ public class MyLinkedList {
 		}
 		return -1;
 	}
-	public void add(int i, int val) throws IndexOutOfBoundsException { //inserts value into given index of list
+	public void add(int i, E val) throws IndexOutOfBoundsException { //inserts value into given index of list
 		if (i > length-1 || i < 0) {
 			throw new IndexOutOfBoundsException("Given index not found");
 		}
@@ -114,11 +145,11 @@ public class MyLinkedList {
 			length++;
 		}
 	}
-	public Integer remove(int i) throws IndexOutOfBoundsException { //removes given index from list
+	public E remove(int i) throws IndexOutOfBoundsException { //removes given index from list
 		if (i > length-1 || i < 0) {
 			throw new IndexOutOfBoundsException("Given index not found");
 		}
-		int removed = this.get(i);
+		E removed = this.get(i);
 		if (i == 0) {
 			start = start.next();
 			start.setPrev(null);
@@ -134,7 +165,7 @@ public class MyLinkedList {
 		length--;
 		return removed;
 	}
-	public boolean remove(Integer val) {
+	public boolean remove(E val) {
 		if (!this.contains(val)) {
 			return false;
 		}
