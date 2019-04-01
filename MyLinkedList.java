@@ -1,44 +1,13 @@
-public class MyLinkedList<E> {
-	private class Node {
-		private E data;
-		private Node next,prev;
-		public Node(E d) {
-			data = d;
-		}
-		public E getData() {
-			return data;
-		}
-		public Node next() {
-			return next;
-		}
-		public Node prev() {
-			return prev;
-		}
-		public E setData(E d) {
-			E old = data;
-			data = d;
-			return old;
-		}
-		public void setNext(Node n) {
-			next = n;
-		}
-		public void setPrev(Node p) {
-			prev = p;
-		}
-		public String toString() {
-			return "" + data;
-		}
-	}
-
-	private int length;
-	private Node start,end;
+public class MyLinkedList {
+	private Integer length;
+	private Node<Integer> start,end;
 	public MyLinkedList() {
 		length = 0;
 	}
-	public int size() {
+	public Integer size() {
 		return length;
 	}
-	public boolean add(E value) { //adds a value to the end of the list
+	public boolean add(Integer value) { //adds a value to the end of the list
 		Node newbie = new Node(value);
 		if (length == 0) { //for empty list
 			start = newbie;
@@ -67,7 +36,7 @@ public class MyLinkedList<E> {
 		}
 		return output + "}";
 	}
-	private Node getNode(int i) throws IndexOutOfBoundsException { //finds node of list at given index
+	private Node getNode(Integer i) throws IndexOutOfBoundsException { //finds node of list at given index
 		if (i > length-1 || i < 0) {
 			throw new IndexOutOfBoundsException("Node with given index not found");
 		}
@@ -78,19 +47,23 @@ public class MyLinkedList<E> {
 		}
 		return nod;
 	}
-	public E get(int i) throws IndexOutOfBoundsException { //finds value of node at given index
+	public Integer get(Integer i) throws IndexOutOfBoundsException { //finds value of node at given index
 		if (i > length-1 || i < 0) {
 			throw new IndexOutOfBoundsException("Given index not found");
 		}
-		return (this.getNode(i)).getData();
+		Node<Integer> node = getNode(i);
+		return node.getData();
 	}
-	public E set(int i, E val) throws IndexOutOfBoundsException { //sets value of node at given index
+	public Integer set(Integer i, Integer val) throws IndexOutOfBoundsException { //sets value of node at given index
 		if (i > length-1 || i < 0) {
 			throw new IndexOutOfBoundsException("No node at given index");
 		}	
-		return this.getNode(i).setData(val);
+		Node<Integer> node = getNode(i);
+		Integer old = node.getData();
+		node.setData(val);
+		return old;
 	}
-	public boolean contains(E val) {
+	public boolean contains(Integer val) {
 		if (length == 0) { //empty list
 			return false;
 		}
@@ -105,12 +78,12 @@ public class MyLinkedList<E> {
 		}
 		return false;
 	}
-	public int indexOf(E val) {
+	public Integer indexOf(Integer val) {
 		if (length == 0) { //empty list
 			return -1;
 		}
 		Node i = start;
-		int index = 0;
+		Integer index = 0;
 		while (i != null) { //goes through entire list - linear
 			if (i.getData() == val) {
 				return index;
@@ -120,7 +93,7 @@ public class MyLinkedList<E> {
 		}
 		return -1;
 	}
-	public void add(int i, E val) throws IndexOutOfBoundsException { //inserts value into given index of list
+	public void add(Integer i, Integer val) throws IndexOutOfBoundsException { //inserts value into given index of list
 		if (i > length-1 || i < 0) {
 			throw new IndexOutOfBoundsException("Given index not found");
 		}
@@ -145,11 +118,11 @@ public class MyLinkedList<E> {
 			length++;
 		}
 	}
-	public E remove(int i) throws IndexOutOfBoundsException { //removes given index from list
+	public Integer remove(int i) throws IndexOutOfBoundsException { //removes given index from list
 		if (i > length-1 || i < 0) {
 			throw new IndexOutOfBoundsException("Given index not found");
 		}
-		E removed = this.get(i);
+		Integer removed = this.get(i);
 		if (i == 0) {
 			start = start.next();
 			start.setPrev(null);
@@ -165,12 +138,12 @@ public class MyLinkedList<E> {
 		length--;
 		return removed;
 	}
-	public boolean remove(E val) {
+	public boolean remove(Integer val) {
 		if (!this.contains(val)) {
 			return false;
 		}
 		else {
-			int indToRemove = this.indexOf(val);
+			Integer indToRemove = this.indexOf(val);
 			this.remove(indToRemove);
 			return true;
 		}
